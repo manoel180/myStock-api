@@ -1,0 +1,5 @@
+fastapi==0.111.0
+pytest==8.2.2
+isNullOrEmpty==1.0.0
+SQLAlchemy==2.0.31
+uvicorn==0.30.1
