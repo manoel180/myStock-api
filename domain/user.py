@@ -4,4 +4,5 @@ from typing import Optional, List
 
 class UserModel(BaseModel):
     id: int
-    username: str
+    name: str
+    login: str

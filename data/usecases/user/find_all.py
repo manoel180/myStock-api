@@ -8,5 +8,4 @@ class FindAllUseCase():
 
     def find_all(self) -> List[UserDomain]:
         db = SessionLocal
-        _list = FindAllRepository(db).get_users()
-        return _list
+        return FindAllRepository(db).get_users()
