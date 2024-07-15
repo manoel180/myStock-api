@@ -1,8 +1,6 @@
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 from data.request.user.user import UserRequest
-
-from fastapi.encoders import jsonable_encoder
 from data.usecases.user.update import UpdateUseCase
 from domain.user import UserModel
 
