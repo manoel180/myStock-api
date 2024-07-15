@@ -19,5 +19,5 @@ class LoginUseCase():
         return result
     
     def find_user(self, login: str) -> UserDomain:
-        db = SessionLocal
-        return FindByLoginRepository(db).user_by_login(login)
+        
+        return FindByLoginRepository().user_by_login(login)

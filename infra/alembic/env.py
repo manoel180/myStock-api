@@ -7,6 +7,7 @@ from alembic import context
 
 from infra.sqlalchemy.entities.user import UserEntity
 from infra.sqlalchemy.entities.category import CategoryEntity
+from infra.sqlalchemy.entities.product import ProductEntity
 
 
 # this is the Alembic Config object, which provides

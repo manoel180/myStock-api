@@ -22,6 +22,7 @@ async def lifespan(app_: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
+app.debug=True
 
 app.title = "myStock api"
 app.version = "0.0.1"
@@ -29,7 +30,7 @@ app.version = "0.0.1"
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/v1/api/login" )
 routers = Routers(app, URLS, '/v1/api')()
 
-# log = logging.getLogger("uvicorn")
+log = logging.getLogger("uvicorn")
 
 
 

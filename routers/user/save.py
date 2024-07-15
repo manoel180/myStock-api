@@ -6,10 +6,10 @@ from data.usecases.user.create import CreateUseCase
 from domain.user import UserModel as UserDomain
 
 
-user_router = APIRouter()
+router = APIRouter()
 
 # Get records from the users table
-@user_router.post('/users', tags=['Users'], response_model=UserDomain, status_code=200)
+@router.post('/users', tags=['Users'], response_model=UserDomain, status_code=200)
 def save(user_request: UserRequest):
 
     result = CreateUseCase().create(user_request=user_request)
