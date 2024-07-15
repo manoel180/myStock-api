@@ -8,7 +8,7 @@ from alembic import context
 from infra.sqlalchemy.entities.user import UserEntity
 from infra.sqlalchemy.entities.category import CategoryEntity
 from infra.sqlalchemy.entities.product import ProductEntity
-
+from infra.config import setting
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -43,7 +43,15 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = config.get_main_option("sqlalchemy.url")
+    # url = config.get_main_option("sqlalchemy.url")
+    database_username = setting.db_usr
+    database_password = setting.db_pwd
+    database_ip       = setting.db_host
+    database_name     = setting.db_name
+    database_port     = setting.db_port
+
+    url = "mysql+mysqlconnector://{0}:{1}@{2}:{3}/{4}".format(database_username, database_password, database_ip, database_port, database_name)
+    
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -70,7 +78,8 @@ def run_migrations_online() -> None:
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata
+            connection=connection, 
+            target_metadata=target_metadata
         )
 
         with context.begin_transaction():

@@ -1,0 +1,38 @@
+services:
+  db:
+    image: mysql:lts
+    restart: always
+    environment:
+      MYSQL_DATABASE: myStockDB
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'user'
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-volume:/var/lib/mysql
+  app:
+    build: .
+    restart: on-failure
+    ports:
+      - "8001:8001"
+    environment:
+      secret_key: "D8BD781F1F4425E2BBDFD546F4ADA"
+      refresh_secret_key: "7FC894CD39FF96E168BF52FD76AD4-refresh"
+      algorithm: "HS256"
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
+      REFRESH_TOKEN_EXPIRE_MINUTES: 1800
+      timeout: 60
+      adminapikey: "secret_key"
+      db_host: "mysqlDB"
+      db_port: 3306
+      db_name: "myStockDB"
+      db_pwd: "user"
+      db_usr: "user"
+    env_file:
+      - ./infra/.env
+    depends_on:
+      - db
+volumes:
+  mysql-volume:
