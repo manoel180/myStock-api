@@ -8,6 +8,6 @@ class CreateUseCase():
 
     def create(self, product_request: ProductRequest) -> ProductModel:
         
-        obj = ProductEntity(**product_request.model_dump())
+        obj = ProductEntity(**product_request.model_dump(exclude='category'))
         result = SaveRepository().save_product(obj)
         return result

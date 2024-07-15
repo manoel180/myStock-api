@@ -1,7 +1,7 @@
 from fastapi import APIRouter
+from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from data.request.product.product import ProductRequest
-from fastapi.encoders import jsonable_encoder
 from data.usecases.product.create import CreateUseCase
 from domain.product import ProductModel
 
@@ -15,4 +15,4 @@ def save(_request: ProductRequest):
     result = CreateUseCase().create(_request)
     if not result:
         return JSONResponse(status_code=404, content={'message': "Not found"})
-    return _request
+    return JSONResponse(status_code=200, content=jsonable_encoder(_request, exclude= ["category_id"]))
