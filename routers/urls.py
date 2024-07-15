@@ -9,13 +9,16 @@ URLS = [
     #Auth
     'routers.auth.login.auth_router',
 
-#Category
+    #Category
     'routers.category.find_all.router',
     'routers.category.save.router',
     'routers.category.update.router',
     'routers.category.delete.router',
 
-
-
+    #Product
+    'routers.product.find_all.router',
+    'routers.product.save.router',
+    'routers.product.update.router',
+    'routers.product.delete.router'
     
 ]

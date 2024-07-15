@@ -8,8 +8,6 @@ from data.dto.token import TokenSchema
 from data.request.auth.login import LoginRequest
 from data.usecases.auth.login import LoginUseCase
 
-
-
 auth_router = APIRouter()
 
 @auth_router.post('/login', tags= ['Auth'], summary="Create access and refresh tokens for user", response_model=TokenSchema)
