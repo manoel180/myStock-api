@@ -1,8 +1,8 @@
 """Added table product
 
-Revision ID: 5bac2c84fde0
+Revision ID: 8f05ab362255
 Revises: df2642e982cd
-Create Date: 2024-07-14 18:35:40.895085
+Create Date: 2024-07-23 11:41:06.960514
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '5bac2c84fde0'
+revision: str = '8f05ab362255'
 down_revision: Union[str, None] = 'df2642e982cd'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -25,6 +25,7 @@ def upgrade() -> None:
     sa.Column('name', sa.String(length=200), nullable=False),
     sa.Column('description', sa.String(length=350), nullable=True),
     sa.Column('quantity', sa.Integer(), nullable=True),
+    sa.Column('quantity_alert', sa.Integer(), insert_default=0, nullable=False),
     sa.Column('price', sa.Float(), nullable=False),
     sa.Column('category_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['category_id'], ['categories.id'], ),

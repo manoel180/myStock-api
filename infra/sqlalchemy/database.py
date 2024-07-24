@@ -16,7 +16,7 @@ database_port     = setting.db_port
 engine = create_engine('mysql+mysqlconnector://{0}:{1}@{2}:{3}/{4}'.
     format(database_username, database_password, database_ip, database_port, database_name))
 
-SessionLocal = scoped_session(sessionmaker(autoflush=True, bind=engine))
+SessionLocal = scoped_session(sessionmaker( bind=engine))
 Base = declarative_base()
 
 def get_db():

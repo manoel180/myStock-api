@@ -19,6 +19,7 @@ URLS = [
     'routers.product.find_all.router',
     'routers.product.save.router',
     'routers.product.update.router',
-    'routers.product.delete.router'
+    'routers.product.delete.router',
+    'routers.product.get_id.router',
     
 ]

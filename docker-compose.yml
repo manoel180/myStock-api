@@ -25,7 +25,7 @@ services:
       REFRESH_TOKEN_EXPIRE_MINUTES: 1800
       timeout: 60
       adminapikey: "secret_key"
-      db_host: "mysqlDB"
+      db_host: "db"
       db_port: 3306
       db_name: "myStockDB"
       db_pwd: "user"

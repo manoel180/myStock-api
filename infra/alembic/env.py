@@ -9,10 +9,19 @@ from infra.sqlalchemy.entities.user import UserEntity
 from infra.sqlalchemy.entities.category import CategoryEntity
 from infra.sqlalchemy.entities.product import ProductEntity
 from infra.config import setting
+import re
+import os
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+
+
+section = config.config_ini_section
+config.set_section_option(section, "db_usr", os.environ.get("db_usr", setting.db_usr))
+config.set_section_option(section, "db_pwd", os.environ.get("db_pwd", setting.db_pwd))
+config.set_section_option(section, "db_host", os.environ.get("db_host", setting.db_host))
+config.set_section_option(section, "db_name", os.environ.get("db_name", setting.db_name))
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
@@ -41,17 +50,11 @@ def run_migrations_offline() -> None:
 
     Calls to context.execute() here emit the given string to the
     script output.
+    
 
     """
-    # url = config.get_main_option("sqlalchemy.url")
-    database_username = setting.db_usr
-    database_password = setting.db_pwd
-    database_ip       = setting.db_host
-    database_name     = setting.db_name
-    database_port     = setting.db_port
-
-    url = "mysql+mysqlconnector://{0}:{1}@{2}:{3}/{4}".format(database_username, database_password, database_ip, database_port, database_name)
-    
+    url = config.get_main_option("sqlalchemy.url")
+     
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -70,6 +73,7 @@ def run_migrations_online() -> None:
     and associate a connection with the context.
 
     """
+   
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
