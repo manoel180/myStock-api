@@ -9,6 +9,10 @@ from alembic.config import Config
 from alembic import command
 from fastapi.middleware.cors import CORSMiddleware
 
+from routers.websocket.websocket import router
+
+
+
 def run_migrations():
     alembic_cfg = Config("alembic.ini")
     command.upgrade(alembic_cfg, "head")
@@ -42,7 +46,7 @@ app.add_middleware(
 )
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/v1/api/login" )
 routers = Routers(app, URLS, '/v1/api')()
-
+# app.include_router(router)
 log = logging.getLogger("uvicorn")
 
 

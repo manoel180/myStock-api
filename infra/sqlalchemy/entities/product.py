@@ -1,5 +1,5 @@
 from infra.sqlalchemy.database import Base
-from sqlalchemy import Column, ForeignKey, Integer, String, Float, DateTime
+from sqlalchemy import Column, ForeignKey, Integer, Numeric, String, Float, DateTime
 from sqlalchemy.orm import relationship
 
 
@@ -12,9 +12,10 @@ class ProductEntity(Base):
         description = Column(String(350))
         quantity = Column(Integer)
         quantity_alert = Column(Integer, default=0)
-        price = Column(Float, nullable=False)
+        price = Column(Numeric(10, 2), nullable=False)
         category_id = Column(Integer, ForeignKey("categories.id"))
+        
         category = relationship('CategoryEntity', back_populates="products")
-
+        sales_items = relationship("ItemSaleEntity", back_populates="products")
         class Config:
                 orm_mode = True

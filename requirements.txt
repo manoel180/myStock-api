@@ -10,3 +10,4 @@ fastapi-dynamic-routers==0.1.1
 alembic==1.13.2
 python-jose==3.3.0
 pydantic-settings==2.3.4
+websockets==12.0

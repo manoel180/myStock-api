@@ -1,5 +1,8 @@
 from infra.sqlalchemy.database import Base
-from sqlalchemy import Column, Integer, String, Float, DateTime
+from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Enum, Integer, String, Float, DateTime
+
+from infra.sqlalchemy.entities.type_user import TypeUserEnum
 
 class UserEntity(Base):
         __tablename__ = 'users'
@@ -8,6 +11,9 @@ class UserEntity(Base):
         name = Column(String(200))
         login = Column(String(50), unique=True)
         password = Column(String(120))
-
+        type_user = Column(Enum(TypeUserEnum), 
+                       default=(TypeUserEnum.CLIENT.value), nullable=False) 
+        
+        sales = relationship("SaleEntity", back_populates="client")
         class Config:
                 orm_mode = True

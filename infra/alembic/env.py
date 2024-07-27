@@ -8,6 +8,9 @@ from alembic import context
 from infra.sqlalchemy.entities.user import UserEntity
 from infra.sqlalchemy.entities.category import CategoryEntity
 from infra.sqlalchemy.entities.product import ProductEntity
+from infra.sqlalchemy.entities.item_sale import ItemSaleEntity
+from infra.sqlalchemy.entities.sale import SaleEntity
+
 from infra.config import setting
 import re
 import os

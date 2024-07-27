@@ -22,4 +22,6 @@ URLS = [
     'routers.product.delete.router',
     'routers.product.get_id.router',
     
+    #ws
+    'routers.websocket.websocket.router'
 ]
