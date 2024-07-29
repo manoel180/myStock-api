@@ -12,7 +12,7 @@ router = APIRouter()
 
 # Get records from the users table
 @router.get('/product', tags=['Product'], response_model=List[ProductModel], status_code=200)
-def find_all(token: Annotated[str, Depends(oauth2_scheme)]) -> List[ProductModel]:
+def find_all(token: Annotated[str, Depends(oauth2_scheme)]) -> List[ProductModel] | JSONResponse:
     
     result = FindAllUseCase().find_all()
     if(not result):

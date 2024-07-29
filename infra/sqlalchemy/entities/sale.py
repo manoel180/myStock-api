@@ -15,7 +15,7 @@ class SaleEntity(Base):
         observation = Column(String(500), nullable=True)
         created_at= Column(DateTime, insert_default=func.now())
 
-        items = relationship("Item", back_populates="sales")
+        items = relationship("ItemSaleEntity", back_populates="sales")
         client= relationship('UserEntity', back_populates="sales")
        
         class Config:

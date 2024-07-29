@@ -22,6 +22,8 @@ URLS = [
     'routers.product.delete.router',
     'routers.product.get_id.router',
     
+    #Sales
+    'routers.sale.make_sale.router',
     #ws
     'routers.websocket.websocket.router'
 ]
