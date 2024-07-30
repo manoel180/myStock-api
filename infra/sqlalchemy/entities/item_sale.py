@@ -17,7 +17,7 @@ class ItemSaleEntity(Base):
         quantity = Column(Integer, nullable=False)
         created_at= Column(DateTime, insert_default=func.now())
 
-        products = relationship("ProductEntity", back_populates="product")
+        products = relationship("ProductEntity", back_populates="sales_items")
         sales = relationship("SaleEntity", back_populates="items")
  
         class Config:

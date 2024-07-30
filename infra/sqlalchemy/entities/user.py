@@ -15,5 +15,6 @@ class UserEntity(Base):
                        default=(TypeUserEnum.CLIENT.value), nullable=False) 
         
         sales = relationship("SaleEntity", back_populates="client")
+        products = relationship("ProductEntity", back_populates="seller")
         class Config:
                 orm_mode = True

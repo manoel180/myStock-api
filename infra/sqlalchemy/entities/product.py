@@ -14,8 +14,10 @@ class ProductEntity(Base):
         quantity_alert = Column(Integer, default=0)
         price = Column(Numeric(10, 2), nullable=False)
         category_id = Column(Integer, ForeignKey("categories.id"))
+        seller_id = Column(Integer, ForeignKey("users.id"))
         
         category = relationship('CategoryEntity', back_populates="products")
         sales_items = relationship("ItemSaleEntity", back_populates="products")
+        seller= relationship('UserEntity', back_populates="products")
         class Config:
                 orm_mode = True
