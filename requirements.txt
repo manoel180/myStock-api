@@ -5,7 +5,7 @@ SQLAlchemy==2.0.31
 uvicorn==0.30.1
 pyjwt==2.8.0
 passlib[bcrypt]==1.7.4
-mysql-connector-python==9.0.0
+mysql-connector-python==9.1.0
 fastapi-dynamic-routers==0.1.1
 alembic==1.13.2
 python-jose==3.3.0
